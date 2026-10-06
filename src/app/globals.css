@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+:root {
+  --font-serif: var(--font-cinzel), 'Times New Roman', serif;
+  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+  
+  --color-gold-light: #FDE68A;
+  --color-gold: #F59E0B;
+  --color-gold-dark: #B45309;
+  --color-gold-glow: rgba(245, 158, 11, 0.25);
+  
+  --color-cosmic-bg: #07090E;
+  --color-cosmic-card: rgba(15, 20, 35, 0.75);
+  --color-cosmic-card-hover: rgba(22, 30, 52, 0.9);
+  --color-cosmic-border: rgba(245, 158, 11, 0.18);
+  --color-cosmic-border-hover: rgba(245, 158, 11, 0.45);
+}
+
+::selection {
+  background-color: #6D144E;
+  color: #FFFFFF;
+}
+
+::-moz-selection {
+  background-color: #6D144E;
+  color: #FFFFFF;
+}
+
+body {
+  background-color: #FAF5F7;
+  color: #2B162C;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .font-cinzel {
+  font-family: var(--font-serif);
+}
+
+/* Custom Glassmorphic Card */
+.cosmic-card {
+  background: var(--color-cosmic-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-cosmic-border);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(245, 158, 11, 0.05);
+  border-radius: 1rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cosmic-card:hover {
+  border-color: var(--color-cosmic-border-hover);
+  box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.6), 0 0 30px -5px rgba(245, 158, 11, 0.12);
+}
+
+.cosmic-card-gold {
+  background: linear-gradient(135deg, rgba(30, 24, 15, 0.85) 0%, rgba(18, 22, 38, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  box-shadow: 0 12px 36px -10px rgba(245, 158, 11, 0.2), inset 0 1px 0 rgba(253, 230, 138, 0.2);
+  border-radius: 1.25rem;
+}
+
+/* Gold Gradient Text */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FDE68A 30%, #F59E0B 70%, #D97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.violet-gradient-text {
+  background: linear-gradient(135deg, #F5F3FF 0%, #DDD6FE 35%, #A78BFA 70%, #8B5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cyan-gradient-text {
+  background: linear-gradient(135deg, #ECFEFF 0%, #A5F3FC 40%, #38BDF8 80%, #0284C7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shimmer Button */
+.btn-gold-shimmer {
+  background: linear-gradient(135deg, #D97706 0%, #F59E0B 50%, #B45309 100%);
+  color: #0F172A;
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.25s ease;
+}
+
+.btn-gold-shimmer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(245, 158, 11, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.btn-gold-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  transform: rotate(25deg);
+  animation: shimmerSweep 4s infinite;
+}
+
+@keyframes shimmerSweep {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  25%, 100% { transform: translateX(100%) rotate(25deg); }
+}
+
+/* Pulsing Aura */
+@keyframes celestialPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-celestial {
+  animation: celestialPulse 6s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090A10;
+}
+::-webkit-scrollbar-thumb {
+  background: #272B40;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F59E0B;
+}
+
+/* Form input custom styles */
+input[type="text"], input[type="number"], select {
+  color-scheme: light;
+}
+
+select option {
+  color: #2B162C;
+  background-color: #FFFFFF;
+  padding: 8px 12px;
+  font-weight: 400;
+}
+
+select option:checked {
+  background-color: #FCE8F3 !important;
+  color: #6D144E !important;
+  font-weight: 700 !important;
+}
+
+/* Print Styling */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print, header, footer, .hero-decorative {
+    display: none !important;
+  }
+  .cosmic-card, .cosmic-card-gold {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #cccccc !important;
+    box-shadow: none !important;
+  }
+  .gold-gradient-text, .violet-gradient-text {
+    color: #000000 !important;
+    -webkit-text-fill-color: initial !important;
+  }
+}
